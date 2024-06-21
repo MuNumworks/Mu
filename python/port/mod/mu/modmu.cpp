@@ -88,13 +88,13 @@ mp_obj_t modmu_get_led() {
 
 
 // TODO :: Reactivate set_blinking function but w/ secret konami code
-
+/*
 mp_obj_t modmu_set_blinking(mp_obj_t cycleDuration, mp_obj_t blinkingPerCycle) {
   mp_float_t bpc = mp_obj_get_float(blinkingPerCycle);
   mp_uint_t cd = mp_obj_get_int(cycleDuration);
   Ion::LED::setBlinking(cd, bpc);
   return mp_const_none;
-}
+}*/
 
 
 // Gen Color 

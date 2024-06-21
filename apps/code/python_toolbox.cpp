@@ -460,8 +460,8 @@ const ToolboxMessageTree MuDrawModuleChildren[] = {
 
 const ToolboxMessageTree MuLedModuleChildren[] = {
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetLed, I18n::Message::PythonSetLed),
-  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetLed, I18n::Message::PythonGetLed),
-  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetABlinking, I18n::Message::PythonSetBlinking)
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetLed, I18n::Message::PythonGetLed)
+  // ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetABlinking, I18n::Message::PythonSetBlinking)
 };
 
 const ToolboxMessageTree MuKeyModuleChildren[] = {
