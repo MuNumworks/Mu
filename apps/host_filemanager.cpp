@@ -574,7 +574,7 @@ void display_host_help(){
   os_wait_1ms(100);
 #endif
   dtext(1,150,C_BLACK,"Upsilon: a fork of Epsilon (c) Numworks");
-  dtext(1,168,C_BLACK,"https://getupsilon.web.app/");
+  dtext(1,168,C_BLACK,"https://munumworks.github.io/mu-website/");
   dtext(1,186,C_BLACK,"creativecommons.org license CC BY-NC-SA 4.0");
   dtext(1,204,C_BLACK,"Persistance and host filesystem (c) B. Parisse");
   dupdate();
