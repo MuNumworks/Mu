@@ -74,6 +74,15 @@ bool AboutController::handleEvent(Ion::Events::Event event) {
         myCell->setAccessoryText(Ion::upsilonVersion());
         return true;
       }
+      if (childLabel == I18n::Message::MuVersion) {
+        MessageTableCellWithBuffer * myCell = (MessageTableCellWithBuffer *)m_selectableTableView.selectedCell();
+        if (strcmp(myCell->accessoryText(), Ion::muVersion()) == 0) {
+          myCell->setAccessoryText(MP_STRINGIFY(MU_STATE)); 
+          return true;
+        }
+        myCell->setAccessoryText(Ion::muVersion());
+        return true;
+      }
       if (childLabel == I18n::Message::OmegaVersion) {
         MessageTableCellWithBuffer * myCell = (MessageTableCellWithBuffer *)m_selectableTableView.selectedCell();
         if (strcmp(myCell->accessoryText(), Ion::omegaVersion()) == 0) {
@@ -207,6 +216,7 @@ void AboutController::willDisplayCellForIndex(HighlightCell * cell, int index) {
 
     static const char * messages[] = {
       (const char*) Ion::username(),
+      Ion::muVersion(),
       Ion::upsilonVersion(),
       Ion::omegaVersion(),
       Ion::softwareVersion(),

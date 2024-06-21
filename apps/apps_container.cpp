@@ -7,6 +7,7 @@
 #include <poincare/exception_checkpoint.h>
 #include <ion/backlight.h>
 #include <poincare/preferences.h>
+#include "code/script_store.h"
 
 #include <algorithm>
 
@@ -106,6 +107,18 @@ void AppsContainer::reset() {
   for (int i = 0; i < numberOfApps(); i++) {
     appSnapshotAtIndex(i)->reset();
   }
+}
+
+void AppsContainer::muReset(bool storage) {
+  Clipboard::sharedClipboard()->reset();
+  for (int i = 0; i < numberOfApps(); i++) {
+    appSnapshotAtIndex(i)->reset();
+  }
+  /*if (storage) {
+    Ion::Storage::sharedStorage()->destroyAllRecords();
+  } else {
+    // Ion::Storage::sharedStorage()->ExamRename();
+  }*/
 }
 
 Poincare::Context * AppsContainer::globalContext() {
@@ -293,6 +306,22 @@ bool AppsContainer::processEvent(Ion::Events::Event event) {
     suspend(true);
     return true;
   }
+
+  // If the event is the log button and exam mode is enabled, we disable it. 
+  if (event == Ion::Events::Log) {
+    if (GlobalPreferences::sharedGlobalPreferences()->isInExamMode()) {
+        displayExamModePopUp(GlobalPreferences::ExamMode::Off);
+        window()->redraw();
+    } else {
+      return true;
+    }
+  }
+
+  // TODO : If the event is the ln button and exam mode is disabled, we enable it. 
+  if (event == Ion::Events::Ln) {
+    // pass
+  }
+
   // If the event is a brightness event, we update the brightness according to the event.
   if (event == Ion::Events::BrightnessPlus || event == Ion::Events::BrightnessMinus) {
       int delta = Ion::Backlight::MaxBrightness/GlobalPreferences::NumberOfBrightnessStates;
@@ -460,8 +489,11 @@ void AppsContainer::redrawWindow(bool force) {
 
 void AppsContainer::activateExamMode(GlobalPreferences::ExamMode examMode) {
   assert(examMode != GlobalPreferences::ExamMode::Off && examMode != GlobalPreferences::ExamMode::Unknown);
-  reset();
+  
+  muReset(false);
+
   Ion::LED::setColor(KDColorRed);
+  
   /* The Dutch exam mode LED is supposed to be orange but we can only make
    * blink "pure" colors: with RGB leds on or off (as the PWM is used for
    * blinking). The closest "pure" color is Yellow. Moreover, Orange LED is
@@ -475,6 +507,7 @@ void AppsContainer::activateExamMode(GlobalPreferences::ExamMode examMode) {
 
 void AppsContainer::examDeactivatingPopUpIsDismissed() {
   if (Ion::USB::isPlugged()) {
+  //if (sKeyboardState.setKey(Ion::Keyboard::Key::Ans)) {
     Ion::USB::enable();
   }
 }

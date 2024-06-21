@@ -3,6 +3,7 @@
 #include "exam_mode_configuration.h"
 #include <assert.h>
 #include <poincare/preferences.h>
+#include "code/script_store.h"
 
 using namespace Poincare;
 
@@ -17,8 +18,10 @@ ExamPopUpController::ExamPopUpController(ExamPopUpControllerDelegate * delegate)
         GlobalPreferences::sharedGlobalPreferences()->setExamMode(mode);
         AppsContainer * container = AppsContainer::sharedAppsContainer();
         if (mode == GlobalPreferences::ExamMode::Off) {
+          // Ion::Storage::sharedStorage()->ExamDename();
           Ion::LED::setColor(KDColorBlack);
           Ion::LED::updateColorWithPlugAndCharge();
+          Code::ScriptStore::setKMinusInExamMode(0);
         } else {
           container->activateExamMode(mode);
         }

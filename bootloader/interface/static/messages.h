@@ -5,12 +5,13 @@ namespace Bootloader {
 
 class Messages {
 public:
-  constexpr static const char * mainTitle = "Upsilon Calculator";
+  constexpr static const char * mainTitle = "Mu Calculator";
 
   // Home menu
   constexpr static const char * homeTitle = "Select a slot";
 
   // Slots OS Type
+  constexpr static const char * muSlot = "-- Mu";
   constexpr static const char * upsilonSlot = "-- Upsilon ";
   constexpr static const char * khiSlot = "-- Khi ";
   constexpr static const char * omegaSlot = "-- Omega ";
@@ -67,7 +68,7 @@ public:
   constexpr static const char * aboutMenuTitle = "About";
 
   constexpr static const char * aboutMessage1 = "This is the bootloader of";
-  constexpr static const char * aboutMessage2 = "the Upsilon Calculator.";
+  constexpr static const char * aboutMessage2 = "the Mu Calculator.";
   constexpr static const char * aboutMessage3 = "It is used to install";
   constexpr static const char * aboutMessage4 = "and select the OS";
   constexpr static const char * aboutMessage5 = "to boot.";

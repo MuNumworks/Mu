@@ -47,5 +47,6 @@ constexpr KDColor KDColorBlue = KDColor::RGB24(0x0000FF);
 constexpr KDColor KDColorYellow = KDColor::RGB24(0xFFFF00);
 constexpr KDColor KDColorOrange = KDColor::RGB24(0xFF9900);
 constexpr KDColor KDColorPurple = KDColor::RGB24(0xFF00DD);
+constexpr KDColor KDColorMu = KDColor::RGB24(0x7E008D);
 
 #endif

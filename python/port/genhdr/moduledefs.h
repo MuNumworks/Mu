@@ -42,6 +42,10 @@ extern const struct _mp_obj_module_t mp_module_urandom;
 
 // Upsilon's modules part
 
+extern const struct _mp_obj_module_t modmu_module;
+#undef MODULE_DEF_MP_QSTR_MU
+#define MODULE_DEF_MP_QSTR_MU { MP_ROM_QSTR(MP_QSTR_mu), MP_ROM_PTR(&modmu_module) },
+
 extern const struct _mp_obj_module_t modion_module;
 #undef MODULE_DEF_MP_QSTR_ION
 #define MODULE_DEF_MP_QSTR_ION { MP_ROM_QSTR(MP_QSTR_ion), MP_ROM_PTR(&modion_module) },
@@ -80,6 +84,7 @@ extern const struct _mp_obj_module_t modturtle_module;
     MODULE_DEF_MP_QSTR_URANDOM \
     MODULE_DEF_MP_QSTR___MAIN__ \
 /* Upsilon's modules part */ \
+    MODULE_DEF_MP_QSTR_MU \
     MODULE_DEF_MP_QSTR_ION \
     MODULE_DEF_MP_QSTR_KANDINSKY \
     MODULE_DEF_MP_QSTR_MATPLOTLIB \
@@ -100,6 +105,7 @@ extern const struct _mp_obj_module_t ulab_user_cmodule;
     MODULE_DEF_MP_QSTR_URANDOM \
     MODULE_DEF_MP_QSTR___MAIN__ \
 /* Upsilon's modules part */ \
+    MODULE_DEF_MP_QSTR_MU \
     MODULE_DEF_MP_QSTR_ION \
     MODULE_DEF_MP_QSTR_KANDINSKY \
     MODULE_DEF_MP_QSTR_MATPLOTLIB \

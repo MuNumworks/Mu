@@ -1,8 +1,29 @@
 #include "script_store.h"
+#include <string.h>
 
 namespace Code {
 
 constexpr char ScriptStore::k_scriptExtension[];
+int ScriptStore::k_minusInExamMode = 0;
+
+void ScriptStore::setKMinusInExamMode(int value) {
+  k_minusInExamMode = value;
+}
+
+/*void ScriptStore::examRename(int value) {
+  char extension[];
+  if (value==1) {
+    extension = ".txtInExam"
+    for(size_t i = 0; i < (size_t)Ion::Storage::sharedStorage()->numberOfRecordsWithExtension("py"); i++) {
+      // TODO : rename all .py files in .txtInExamMode file. 
+    }
+  } else {
+    extension = ".py"
+    // TODO : rename all .txtInExamMode files in .py file. 
+  }
+}
+*/
+
 
 bool ScriptStore::ScriptNameIsFree(const char * baseName) {
   return ScriptBaseNamed(baseName).isNull();
@@ -10,7 +31,7 @@ bool ScriptStore::ScriptNameIsFree(const char * baseName) {
 
 // Here we add "base" script
 ScriptStore::ScriptStore() {
-  
+  addScriptFromTemplate(ScriptTemplate::Perf());
 }
 
 void ScriptStore::deleteAllScripts() {

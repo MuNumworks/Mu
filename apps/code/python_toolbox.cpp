@@ -371,6 +371,7 @@ const ToolboxMessageTree KandinskyModuleChildren[] = {
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetPixel, I18n::Message::PythonGetPixel),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetPixel, I18n::Message::PythonSetPixel),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandColor, I18n::Message::PythonColor),
+  //ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGenColor, I18n::Message::PythonGenColor),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandDrawString, I18n::Message::PythonDrawString),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandDrawLine, I18n::Message::PythonDrawLine),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandDrawCircle, I18n::Message::PythonDrawCircle),
@@ -445,6 +446,39 @@ const ToolboxMessageTree IonModuleChildren[] = {
   ToolboxMessageTree::Node(I18n::Message::IonKeyList, IonKeyModuleChildren)
 };
 
+const ToolboxMessageTree MuCollideModuleChildren[] = {
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandCollideRect, I18n::Message::PythonCollideRect),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandCollideCircle, I18n::Message::PythonCollideCircle),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandCollideCircleRect, I18n::Message::PythonCollideCircleRect),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetDir, I18n::Message::PythonGetDir)
+};
+
+const ToolboxMessageTree MuDrawModuleChildren[] = {
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGenColor, I18n::Message::PythonGenColor),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandFill, I18n::Message::PythonFill)
+};
+
+const ToolboxMessageTree MuLedModuleChildren[] = {
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetLed, I18n::Message::PythonSetLed),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetLed, I18n::Message::PythonGetLed),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandSetABlinking, I18n::Message::PythonSetBlinking)
+};
+
+const ToolboxMessageTree MuKeyModuleChildren[] = {
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandGetPressed, I18n::Message::PythonGetPressed)
+};
+
+const ToolboxMessageTree MuModuleChildren[] = {
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandImportMu, I18n::Message::PythonImportMu, false),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandImportFromMu, I18n::Message::PythonImportMu, false),
+  ToolboxMessageTree::Leaf(I18n::Message::PythonCommandMuFunction, I18n::Message::PythonMuFunction, false, I18n::Message::PythonCommandMuFunctionWithoutArg),
+  ToolboxMessageTree::Node(I18n::Message::MuLed, MuLedModuleChildren),
+  ToolboxMessageTree::Node(I18n::Message::MuDraw, MuDrawModuleChildren),
+  ToolboxMessageTree::Node(I18n::Message::MuCollide, MuCollideModuleChildren),
+  ToolboxMessageTree::Node(I18n::Message::MuKey, MuKeyModuleChildren),
+  ToolboxMessageTree::Leaf(I18n::Message::MuDocumentation, I18n::Message::MuDocumentationLink)
+};
+
 const ToolboxMessageTree TimeModuleChildren[] = {
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandImportTime, I18n::Message::PythonImportTime, false),
   ToolboxMessageTree::Leaf(I18n::Message::PythonCommandImportFromTime, I18n::Message::PythonImportTime, false),
@@ -490,6 +524,7 @@ const ToolboxMessageTree modulesChildren[] = {
 #if defined(INCLUDE_ULAB)
   ToolboxMessageTree::Node(I18n::Message::UlabModule, UlabModuleChildren),
 #endif
+  ToolboxMessageTree::Node(I18n::Message::MuModule, MuModuleChildren),
   ToolboxMessageTree::Node(I18n::Message::TurtleModule, TurtleModuleChildren),
   ToolboxMessageTree::Node(I18n::Message::RandomModule, RandomModuleChildren),
   ToolboxMessageTree::Node(I18n::Message::KandinskyModule, KandinskyModuleChildren),

@@ -140,6 +140,8 @@ port_src += $(addprefix python/port/,\
   mod/ion/modion.cpp \
   mod/ion/modion_table.cpp \
   mod/ion/file.cpp \
+  mod/mu/modmu.cpp \
+  mod/mu/modmu_table.c \
   mod/kandinsky/modkandinsky.cpp \
   mod/kandinsky/modkandinsky_table.c \
   mod/matplotlib/modmatplotlib.cpp \
@@ -242,6 +244,7 @@ tests_src += $(addprefix python/test/,\
   basics.cpp \
   execution_environment.cpp \
   ion.cpp \
+  mu.cpp \
   kandinsky.cpp \
   math.cpp \
   random.cpp \

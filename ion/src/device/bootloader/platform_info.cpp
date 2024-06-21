@@ -13,6 +13,10 @@
 #error This file expects OMEGA_VERSION to be defined
 #endif
 
+#ifndef MU_VERSION
+#error This file expects MU_VERSION to be defined
+#endif
+
 #ifndef UPSILON_VERSION
 #error This file expects UPSILON_VERSION to be defined
 #endif
@@ -72,7 +76,10 @@ public:
     m_upsilonMagicHeader(UpsilonMagic),
     m_UpsilonVersion{UPSILON_VERSION},
     m_osType(OSType),
-    m_upsilonMagicFooter(UpsilonMagic) { }
+    m_upsilonMagicFooter(UpsilonMagic),
+    m_muMagicHeader(MuMagic),
+    m_MuVersion{MU_VERSION},
+    m_muMagicFooter(MuMagic) {}
 
   const char * omegaVersion() const {
     assert(m_storageAddressRAM != nullptr);
@@ -83,6 +90,7 @@ public:
     assert(m_omegaMagicFooter == OmegaMagic);
     return m_omegaVersion;
   }
+  
   const char * upsilonVersion() const {
     assert(m_storageAddress != nullptr);
     assert(m_storageSize != 0);
@@ -92,6 +100,16 @@ public:
     assert(m_omegaMagicFooter == OmegaMagic);
     return m_UpsilonVersion;
   }
+  const char * muVersion() const {
+    assert(m_storageAddress != nullptr);
+    assert(m_storageSize != 0);
+    assert(m_header == Magic);
+    assert(m_footer == Magic);
+    assert(m_omegaMagicHeader == OmegaMagic);
+    assert(m_omegaMagicFooter == OmegaMagic);
+    return m_MuVersion;
+  }
+
   const volatile char * username() const volatile {
     assert(m_storageAddressRAM != nullptr);
     assert(m_storageSizeRAM != 0);
@@ -108,7 +126,8 @@ private:
   constexpr static uint32_t Magic = 0xDEC0EDFE;
   constexpr static uint32_t OmegaMagic = 0xEFBEADDE;
   constexpr static uint32_t UpsilonMagic = 0x55707369;
-  constexpr static uint32_t OSType = 0x79827178;
+  constexpr static uint32_t OSType = 0x79827179;
+  constexpr static uint32_t MuMagic = 0x7E008D69;
   uint32_t m_header;
   const char m_expectedEpsilonVersion[8];
   void * m_storageAddressRAM;
@@ -128,6 +147,10 @@ private:
   const char m_UpsilonVersion[16];
   uint32_t m_osType;
   uint32_t m_upsilonMagicFooter;
+  uint32_t m_muMagicHeader;
+  const char m_MuVersion[16];
+  uint32_t m_muMagicFooter;
+  
 };
 
 const UserlandHeader __attribute__((section(".userland_header"), used)) k_userlandHeader;
@@ -160,6 +183,10 @@ const char * Ion::omegaVersion() {
 
 const char * Ion::upsilonVersion() {
   return k_userlandHeader.upsilonVersion();
+}
+
+const char * Ion::muVersion() {
+  return k_userlandHeader.muVersion();
 }
 
 const volatile char * Ion::username() {

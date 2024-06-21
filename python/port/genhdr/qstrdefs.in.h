@@ -339,6 +339,32 @@ Q(value)
 Q(values)
 Q(zip)
 
+  // TestClass QSTR
+Q(testclass)
+Q(drange)
+Q(fill_octogone)
+
+
+  // Mu QSTR
+Q(brange)
+Q(fill_rects)
+Q(get_pressed)
+Q(get_dir)
+Q(fill)
+Q(collideCircle)
+Q(collideCircleRect)
+Q(logo)
+Q(destroy_ethan)
+Q(collideRect)
+Q(mu)
+Q(set_led)
+Q(get_led)
+Q(gen_color)
+Q(set_blinking)
+Q(presses_update)
+Q(click)
+Q(release)
+
   // Ion QSTR
 Q(get_keys)
 Q(ion)

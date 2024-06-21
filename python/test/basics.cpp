@@ -9,5 +9,5 @@ QUIZ_CASE(python_basics) {
 
 // "base" scripts to test.
 QUIZ_CASE(python_template) {
-
+  assert_script_execution_succeeds(Code::ScriptTemplate::Morse()->content());
 }

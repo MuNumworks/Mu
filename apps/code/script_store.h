@@ -5,6 +5,7 @@
 #include "script.h"
 #include "script_template.h"
 #include <python/port/port.h>
+#include <../global_preferences.h>
 extern "C" {
 #include "py/parse.h"
 }
@@ -15,6 +16,12 @@ class ScriptStore : public MicroPython::ScriptProvider {
 public:
   static constexpr char k_scriptExtension[] = "py";
   static constexpr size_t k_scriptExtensionLength = 2;
+  
+  static int k_minusInExamMode;
+
+  static void setKMinusInExamMode(int value);
+  
+  // static void examRename(int value);
 
   // Storage information
   static bool ScriptNameIsFree(const char * baseName);
@@ -30,8 +37,10 @@ public:
     return Script(Ion::Storage::sharedStorage()->recordBaseNamedWithExtension(baseName, k_scriptExtension));
   }
   int numberOfScripts() {
-    return Ion::Storage::sharedStorage()->numberOfRecordsWithExtension(k_scriptExtension);
+    // if (!(GlobalPreferences::sharedGlobalPreferences()->isInExamMode())) {
+    return (Ion::Storage::sharedStorage()->numberOfRecordsWithExtension(k_scriptExtension));
   }
+
   Ion::Storage::Record::ErrorStatus addNewScript() {
     return addScriptFromTemplate(ScriptTemplate::Empty());
   }

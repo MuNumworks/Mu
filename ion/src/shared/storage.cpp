@@ -177,4 +177,25 @@ void Storage::emptyTrash() {
   }
 }
 
+bool endsWith(const char *str, const char *suffix) {
+    size_t str_len = strlen(str);
+    size_t suffix_len = strlen(suffix);
+
+    if (str_len >= suffix_len) {
+        return strcmp(str + str_len - suffix_len, suffix) == 0;
+    } else {
+        return false;
+    }
 }
+
+/*
+void Storage::ExamRename() {
+  int count = numberOfRecords();
+  for (int i = 0; i < count; i++) {
+    const char filename = 
+
+  }
+}*/
+
+}
+

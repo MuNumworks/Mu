@@ -29,12 +29,12 @@ I18n::Message ExamModeConfiguration::examModeActivationWarningMessage(GlobalPref
 
 KDColor ExamModeConfiguration::examModeColor(GlobalPreferences::ExamMode mode) {
   assert(mode == GlobalPreferences::ExamMode::Standard || mode == GlobalPreferences::ExamMode::NoSym || mode == GlobalPreferences::ExamMode::NoSymNoText);
-  return KDColorRed;
+  return KDColorBlue;
 }
 
 bool ExamModeConfiguration::appIsForbiddenInExamMode(App::Descriptor::ExaminationLevel appExaminationLevel, GlobalPreferences::ExamMode mode) {
   if (mode == GlobalPreferences::ExamMode::NoSymNoText) {
-    return appExaminationLevel == App::Descriptor::ExaminationLevel::Basic;
+    return false;
   }
   return false;
 }

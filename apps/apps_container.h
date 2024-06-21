@@ -34,6 +34,7 @@ public:
   App::Snapshot * hardwareTestAppSnapshot();
   App::Snapshot * onBoardingAppSnapshot();
   App::Snapshot * usbConnectedAppSnapshot();
+  void muReset(bool storage = true);
   void reset();
   Poincare::Context * globalContext();
   MathToolbox * mathToolbox();

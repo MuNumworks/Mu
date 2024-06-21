@@ -26,8 +26,10 @@
 
 #include <assert.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "py/runtime.h"
+
 
 #if MICROPY_PY_URANDOM
 
@@ -148,6 +150,7 @@ STATIC mp_obj_t mod_urandom_randint(mp_obj_t a_in, mp_obj_t b_in) {
     }
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_urandom_randint_obj, mod_urandom_randint);
+
 
 STATIC mp_obj_t mod_urandom_choice(mp_obj_t seq) {
     mp_int_t len = mp_obj_get_int(mp_obj_len(seq));

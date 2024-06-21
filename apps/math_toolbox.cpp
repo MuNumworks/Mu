@@ -186,7 +186,7 @@ const ToolboxMessageTree * unitMassChildrenForMetricToolbox[] = {
   &unitMassGram,
   &unitMassGramKilo,
   &unitMassTonne,
-  &unitMassImperialNode
+  &unitMassImperialNode,
 };
 const ToolboxMessageTree unitMassFork[] = {
   ToolboxMessageTree::Node(I18n::Message::UnitMassMenu, unitMassChildrenForMetricToolbox),
