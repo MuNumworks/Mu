@@ -10,6 +10,7 @@ public:
   constexpr ScriptTemplate(const char * name, const char * value) : m_name(name), m_value(value) {}
   static const ScriptTemplate * Empty();
   static const ScriptTemplate * Perf();
+  static const ScriptTemplate * Pygame();
   const char * name() const { return m_name; }
   const char * content() const { return m_value + Script::StatusSize(); }
   const char * value() const { return m_value; }

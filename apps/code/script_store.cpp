@@ -10,19 +10,38 @@ void ScriptStore::setKMinusInExamMode(int value) {
   k_minusInExamMode = value;
 }
 
-/*void ScriptStore::examRename(int value) {
-  char extension[];
-  if (value==1) {
-    extension = ".txtInExam"
-    for(size_t i = 0; i < (size_t)Ion::Storage::sharedStorage()->numberOfRecordsWithExtension("py"); i++) {
-      // TODO : rename all .py files in .txtInExamMode file. 
+void ScriptStore::examRename(int value) {
+  const char* oldExtension = value == 1 ? ".py" : ".txtInExam";
+  const char* newExtension = value == 1 ? ".txtInExam" : ".py";
+
+  size_t numRecords = Ion::Storage::sharedStorage()->numberOfRecordsWithExtension(oldExtension);
+
+  for (size_t i = 0; i < numRecords; i++) {
+    Ion::Storage::Record record = Ion::Storage::sharedStorage()->recordWithExtensionAtIndex(oldExtension, i);
+    if (!record.isNull()) {
+      // Get the base name and create the new name
+      const char* baseName = record.fullName();
+      size_t baseNameLength = strlen(baseName) - strlen(oldExtension);
+      
+      // Create new name with the new extension
+      char newName[baseNameLength + strlen(newExtension) + 1];
+      strncpy(newName, baseName, baseNameLength);
+      strcpy(newName + baseNameLength, newExtension);
+
+      // Get the record content
+      size_t recordSize = record.value().size;
+      const void* recordData = record.value().buffer;
+
+      // Create a new record with the new name and the same content
+      Ion::Storage::Record::ErrorStatus err = Ion::Storage::sharedStorage()->createRecordWithFullName(newName, recordData, recordSize);
+      if (err == Ion::Storage::Record::ErrorStatus::None) {
+        // Delete the old record if the new record was successfully created
+        Ion::Storage::sharedStorage()->destroyRecord(record);
+      }
     }
-  } else {
-    extension = ".py"
-    // TODO : rename all .txtInExamMode files in .py file. 
   }
 }
-*/
+
 
 
 bool ScriptStore::ScriptNameIsFree(const char * baseName) {
@@ -31,6 +50,7 @@ bool ScriptStore::ScriptNameIsFree(const char * baseName) {
 
 // Here we add "base" script
 ScriptStore::ScriptStore() {
+  addScriptFromTemplate(ScriptTemplate::Pygame());
   addScriptFromTemplate(ScriptTemplate::Perf());
 }
 

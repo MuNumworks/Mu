@@ -108,6 +108,7 @@ public:
 
   // Record destruction
   void destroyAllRecords();
+  void ExamRename();
   void destroyRecordWithBaseNameAndExtension(const char * baseName, const char * extension);
   void destroyRecordsWithExtension(const char * extension);
 
@@ -218,5 +219,5 @@ public:
 };
 
 }
-
+#include "storage.h"
 #endif

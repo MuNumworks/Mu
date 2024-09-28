@@ -339,13 +339,12 @@ Q(value)
 Q(values)
 Q(zip)
 
-  // TestClass QSTR
-Q(testclass)
-Q(drange)
-Q(fill_octogone)
+  // Mu Pygame QSTRs
+Q(pygame)
+Q(display)
+Q(set_mode)
 
-
-  // Mu QSTR
+  // Mu QSTRs
 Q(brange)
 Q(fill_rects)
 Q(get_pressed)

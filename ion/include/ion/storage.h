@@ -36,8 +36,7 @@ public:
   int numberOfRecords();
   Record recordAtIndex(int index);
   void destroyRecord(Record record);
-  void ExamRename();
-  void ExameDename();
+  void ExamRename(int value);
 
   void reinsertTrash(const char * extension);
   void emptyTrash();

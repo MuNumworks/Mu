@@ -114,11 +114,11 @@ void AppsContainer::muReset(bool storage) {
   for (int i = 0; i < numberOfApps(); i++) {
     appSnapshotAtIndex(i)->reset();
   }
-  /*if (storage) {
+  if (storage) {
     Ion::Storage::sharedStorage()->destroyAllRecords();
   } else {
-    // Ion::Storage::sharedStorage()->ExamRename();
-  }*/
+    Code::ScriptStore::examRename(1);
+  }
 }
 
 Poincare::Context * AppsContainer::globalContext() {
